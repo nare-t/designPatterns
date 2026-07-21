@@ -1,3 +1,4 @@
+#include "Factory.hpp"
 #include "Singleton.hpp"
 #include <iostream>
 using namespace std;
@@ -16,9 +17,21 @@ void testSingleton() {
     }
 }
 
-int main() {
+void testFactory() {
+    CoffeeShop *shop1 = new Cafe1();
+    shop1->orderCoffee();
+    delete shop1;
 
+    CoffeeShop *shop2 = new Cafe2();
+    shop2->orderCoffee();
+    delete shop2;
+}
+
+int main() {
+    cout << "\nTESTING SINGLETON\n";
     testSingleton();
 
+    cout << "\nTESTING FACTORY\n";
+    testFactory();
     return 0;
 }
