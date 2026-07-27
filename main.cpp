@@ -18,13 +18,13 @@ void testSingleton() {
 }
 
 void testFactory() {
-    CoffeeShop *shop1 = new Cafe1();
-    shop1->orderCoffee();
-    delete shop1;
-
-    CoffeeShop *shop2 = new Cafe2();
-    shop2->orderCoffee();
-    delete shop2;
+    CoffeeFactory factory;
+    Coffee *coffee1 = factory.createCoffee(1);
+    Coffee *coffee2 = factory.createCoffee(2);
+    coffee1->brew();
+    coffee2->brew();
+    delete coffee1;
+    delete coffee2;
 }
 
 int main() {

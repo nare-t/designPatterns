@@ -18,24 +18,15 @@ class ArmenianCoffee : public Coffee {
     void brew() { std::cout << "\nbrewing strong armenian dark coffee"; }
 };
 
-class CoffeeShop {
+class CoffeeFactory {
   public:
-    virtual ~CoffeeShop() {};
-    virtual Coffee *makeCoffee() = 0;
-
-    void orderCoffee() {
-        Coffee *coffee = makeCoffee();
-        coffee->brew();
-        delete coffee;
+    Coffee *createCoffee(int whichCoffee) {
+        if (whichCoffee == 1) {
+            return new Latte();
+        }
+        if (whichCoffee == 2) {
+            return new ArmenianCoffee();
+        }
+        return nullptr;
     }
-};
-
-class Cafe1 : public CoffeeShop {
-  public:
-    Coffee *makeCoffee() { return new Latte(); }
-};
-
-class Cafe2 : public CoffeeShop {
-  public:
-    Coffee *makeCoffee() { return new ArmenianCoffee(); }
 };
