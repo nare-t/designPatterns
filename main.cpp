@@ -2,6 +2,7 @@
 #include "Builder.hpp"
 #include "Decorator.hpp"
 #include "Factory.hpp"
+#include "Observer.hpp"
 #include "Singleton.hpp"
 #include <iostream>
 using namespace std;
@@ -60,6 +61,19 @@ void testBuilder() {
     secondCar->DisplayCar();
     delete secondCar;
 }
+void testObserver() {
+    Newspaper newspaper;
+    Reader reader1("Nare");
+    Reader reader2("Ani");
+    Reader reader3("Hayk");
+    newspaper.subscribe(&reader1);
+    newspaper.subscribe(&reader2);
+    newspaper.subscribe(&reader3);
+    newspaper.publishNews("First news");
+    cout << "Ani left\n";
+    newspaper.unsubscribe(&reader2);
+    newspaper.publishNews("Second news");
+}
 
 int main() {
     cout << "\nTESTING SINGLETON\n";
@@ -76,6 +90,9 @@ int main() {
 
     cout << "\n\nTESTING BUILDER\n";
     testBuilder();
+
+    cout << "\n\nTESTING OBSERVER\n";
+    testObserver();
 
     return 0;
 }
