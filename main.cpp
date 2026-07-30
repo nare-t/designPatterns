@@ -1,6 +1,7 @@
 #include "Adapter.hpp"
 #include "Builder.hpp"
 #include "Decorator.hpp"
+#include "Facade.hpp"
 #include "Factory.hpp"
 #include "Observer.hpp"
 #include "Singleton.hpp"
@@ -84,6 +85,10 @@ void testStrategy() {
     gps.setStrategy(&walkingPath);
     gps.buildRoute("Yerevan", "Sevan");
 }
+void testFacade() {
+    MovieFacade cinema;
+    cinema.watchMovie();
+}
 
 int main() {
     cout << "\nTESTING SINGLETON\n";
@@ -106,6 +111,9 @@ int main() {
 
     cout << "\n\nTESTING STRATEGY\n";
     testStrategy();
+
+    cout << "\n\nTESTING FACADE\n";
+    testFacade();
 
     return 0;
 }
