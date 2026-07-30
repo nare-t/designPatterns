@@ -1,4 +1,5 @@
 #include "Adapter.hpp"
+#include "Builder.hpp"
 #include "Decorator.hpp"
 #include "Factory.hpp"
 #include "Singleton.hpp"
@@ -45,6 +46,20 @@ void testAdapter() {
     delete metersProvider;
     delete adapter;
 }
+void testBuilder() {
+    CarBuilder builder;
+    builder.BuildEngine();
+    builder.BuildSeats();
+    Car *newCar = builder.GetCar();
+    newCar->DisplayCar();
+    delete newCar;
+
+    CarBuilder builder_2;
+    builder_2.BuildSeats();
+    Car *secondCar = builder_2.GetCar();
+    secondCar->DisplayCar();
+    delete secondCar;
+}
 
 int main() {
     cout << "\nTESTING SINGLETON\n";
@@ -58,6 +73,9 @@ int main() {
 
     cout << "\n\nTESTING ADAPTER";
     testAdapter();
+
+    cout << "\n\nTESTING BUILDER\n";
+    testBuilder();
 
     return 0;
 }
