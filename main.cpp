@@ -1,3 +1,4 @@
+#include "Decorator.hpp"
 #include "Factory.hpp"
 #include "Singleton.hpp"
 #include <iostream>
@@ -27,11 +28,24 @@ void testFactory() {
     delete coffee2;
 }
 
+void testDecorator() {
+    Decorator::Coffee *newCoffee = new Decorator::SimpleCoffee();
+    newCoffee = new Decorator::MilkDecorator(newCoffee);
+    newCoffee = new Decorator::MilkDecorator(newCoffee);
+    newCoffee = new Decorator::SugarDecorator(newCoffee);
+    cout << newCoffee->print();
+    delete newCoffee;
+}
+
 int main() {
     cout << "\nTESTING SINGLETON\n";
     testSingleton();
 
     cout << "\nTESTING FACTORY\n";
     testFactory();
+
+    cout << "\nTESTING DECORATOR\n";
+    testDecorator();
+
     return 0;
 }
