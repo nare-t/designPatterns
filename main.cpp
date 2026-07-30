@@ -4,6 +4,7 @@
 #include "Factory.hpp"
 #include "Observer.hpp"
 #include "Singleton.hpp"
+#include "Strategy.hpp"
 #include <iostream>
 using namespace std;
 
@@ -74,6 +75,15 @@ void testObserver() {
     newspaper.unsubscribe(&reader2);
     newspaper.publishNews("Second news");
 }
+void testStrategy() {
+    Navigator gps;
+    CarStrategy carPath;
+    WalkingStrategy walkingPath;
+    gps.setStrategy(&carPath);
+    gps.buildRoute("Yerevan", "Sevan");
+    gps.setStrategy(&walkingPath);
+    gps.buildRoute("Yerevan", "Sevan");
+}
 
 int main() {
     cout << "\nTESTING SINGLETON\n";
@@ -93,6 +103,9 @@ int main() {
 
     cout << "\n\nTESTING OBSERVER\n";
     testObserver();
+
+    cout << "\n\nTESTING STRATEGY\n";
+    testStrategy();
 
     return 0;
 }
