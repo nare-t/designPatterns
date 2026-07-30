@@ -1,3 +1,4 @@
+#include "Adapter.hpp"
 #include "Decorator.hpp"
 #include "Factory.hpp"
 #include "Singleton.hpp"
@@ -36,6 +37,14 @@ void testDecorator() {
     cout << newCoffee->print();
     delete newCoffee;
 }
+void testAdapter() {
+    SecondInterface *metersProvider = new SecondInterface();
+    cout << "\nSecondInterface output: " << metersProvider->getMeters();
+    FirstInterface *adapter = new Adapter(metersProvider);
+    cout << "\nAdapter converted output: " << adapter->getKilometers();
+    delete metersProvider;
+    delete adapter;
+}
 
 int main() {
     cout << "\nTESTING SINGLETON\n";
@@ -46,6 +55,9 @@ int main() {
 
     cout << "\nTESTING DECORATOR\n";
     testDecorator();
+
+    cout << "\n\nTESTING ADAPTER";
+    testAdapter();
 
     return 0;
 }
