@@ -15,7 +15,7 @@ class Latte : public Coffee {
 
 class ArmenianCoffee : public Coffee {
   public:
-    void brew() { std::cout << "\nbrewing strong armenian dark coffee"; }
+    void brew() { std::cout << "\nbrewing strong armenian dark coffee\n"; }
 };
 
 class CoffeeFactory {
