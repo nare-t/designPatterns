@@ -7,6 +7,8 @@ class Car {
     std::string engine = "No Engine";
     int seats = 0;
 
+    Car(std::string eng, int sts) : engine(eng), seats(sts) {}
+
     void DisplayCar() const {
         std::cout << "Engine: " << engine << "\n";
         std::cout << "Seats : " << seats << "\n";
@@ -15,14 +17,21 @@ class Car {
 
 class CarBuilder {
   private:
-    Car *car;
+    std::string engine = "";
+    int seats = 0;
 
   public:
-    CarBuilder() { car = new Car(); }
+    CarBuilder() {}
 
-    void BuildEngine() { car->engine = "Sports Engine"; }
+    CarBuilder *setEngine(std::string engine) {
+        this->engine = engine;
+        return this;
+    }
 
-    void BuildSeats() { car->seats = 2; }
+    CarBuilder *setSeats(int seats) {
+        this->seats = seats;
+        return this;
+    }
 
-    Car *GetCar() { return car; }
+    Car build() { return Car(this->engine, this->seats); }
 };

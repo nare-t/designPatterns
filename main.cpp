@@ -51,17 +51,12 @@ void testAdapter() {
 }
 void testBuilder() {
     CarBuilder builder;
-    builder.BuildEngine();
-    builder.BuildSeats();
-    Car *newCar = builder.GetCar();
-    newCar->DisplayCar();
-    delete newCar;
+    Car myCar = builder.setEngine("Sports Engine")->setSeats(2)->build();
+    myCar.DisplayCar();
 
     CarBuilder builder_2;
-    builder_2.BuildSeats();
-    Car *secondCar = builder_2.GetCar();
-    secondCar->DisplayCar();
-    delete secondCar;
+    Car secondCar = builder_2.setSeats(2)->build();
+    secondCar.DisplayCar();
 }
 void testObserver() {
     Newspaper newspaper;
